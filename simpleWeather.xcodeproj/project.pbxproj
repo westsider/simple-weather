@@ -58,13 +58,13 @@
 		0D7D4EFE1E3FE1570019D5C1 /* simpleWeather */ = {
 			isa = PBXGroup;
 			children = (
-				0D7D4EFF1E3FE1570019D5C1 /* AppDelegate.swift */,
+				0D7D4F031E3FE1570019D5C1 /* Main.storyboard */,
 				0D7D4F011E3FE1570019D5C1 /* ViewController.swift */,
 				0D7D4F111E3FE2BD0019D5C1 /* Location API.swift */,
 				0D7D4F131E3FE2CD0019D5C1 /* Weather API.swift */,
-				0D7D4F031E3FE1570019D5C1 /* Main.storyboard */,
 				0D7D4F061E3FE1580019D5C1 /* Assets.xcassets */,
 				0D7D4F081E3FE1580019D5C1 /* LaunchScreen.storyboard */,
+				0D7D4EFF1E3FE1570019D5C1 /* AppDelegate.swift */,
 				0D7D4F0B1E3FE1580019D5C1 /* Info.plist */,
 			);
 			path = simpleWeather;

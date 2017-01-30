@@ -30,17 +30,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var cityInput: UISearchBar!
+    
+    @IBOutlet weak var weatherDisplay: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        weatherDisplay.text = "Please Enter a city to get a Weather Forecast \r\n\r\nWeather Forecast for your Location \r\n\r\nDate               Hi Low    Conditions \r\n1/23/2017      40/60        Clear \r\n1/23/2017      40/60        Clear \r\n1/23/2017      40/60        Clear\r\n1/23/2017      40/60        Clear"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func searchAction(_ sender: Any) {
+        
+        weatherDisplay.text = "Launching Search..."
+        
     }
+
 
 
 }

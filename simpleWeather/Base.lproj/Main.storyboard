@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="simpleWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,53 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nvm-fh-PjH">
+                                <rect key="frame" x="0.0" y="226" width="258" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JjX-gn-sXi">
+                                <rect key="frame" x="16" y="126" width="343" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">    Weather Forecast for your Location
+    Date               Hi Low    Conditions 
+    1/23/2017      40/60        Clear 1/23/2017      40/60        Clear 1/23/2017      40/60        Clear 1/23/2017      40/60        Clear</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNA-pc-6wx">
+                                <rect key="frame" x="265" y="226" width="94" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="vhx-5T-16A"/>
+                                </constraints>
+                                <state key="normal" title="Get Weather"/>
+                                <connections>
+                                    <action selector="searchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6w4-dY-WoK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9F3-HT-epf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nvm-fh-PjH" secondAttribute="bottom" constant="397" id="MOK-mM-yPo"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="bottom" secondItem="PNA-pc-6wx" secondAttribute="bottom" id="Uv3-9K-xaw"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="trailing" secondItem="PNA-pc-6wx" secondAttribute="trailing" id="ZG9-pb-3Ol"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="PNA-pc-6wx" secondAttribute="top" id="lqq-6N-Aii"/>
+                            <constraint firstItem="PNA-pc-6wx" firstAttribute="leading" secondItem="nvm-fh-PjH" secondAttribute="trailing" constant="7" id="mez-Tc-3E7"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="JjX-gn-sXi" secondAttribute="bottom" id="uHw-ba-qhE"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wGO-kc-u17"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wlR-J9-oDM"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="xrK-bU-S4G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityInput" destination="nvm-fh-PjH" id="sJZ-6p-7yZ"/>
+                        <outlet property="weatherDisplay" destination="JjX-gn-sXi" id="mBW-Rw-t7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>

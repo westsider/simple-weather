@@ -6,6 +6,28 @@
 //  Copyright © 2017 Warren Hansen. All rights reserved.
 //
 
+/*
+    Current Weather Swift Needs
+ 
+    Build UI with State / City + Scrollable display
+ 
+    Weather Forecast for your Locattion
+    Date               Hi Low    Conditions <— Scrollable
+    1/23/2017      40/60        Clear
+ 
+    <— Text Entry —>    Los Angeles CA  ** Update Button**
+ 
+    1    Parse City/ State
+            Do this in Location Class/file
+    2    Get weather for city/state for next 10 day
+            Do this in weatherAPI class/ file
+    3    Display 10 day forecast in UI
+        Call weatherAPI / Location API
+    4   Show progress bar getting weather
+
+    Eliminate GPS, Exact date forecast
+*/
+
 import UIKit
 
 class ViewController: UIViewController {

@@ -140,7 +140,9 @@ extension ForecastDetail {
 
 class GetWeather {
     // MARK: - Forecast
-    func getForecast() {
+    func getForecast(completion: @escaping (_ result: String) -> Void) {
+        
+        var theWeather: String = ""
 
          let task = URLSession.shared.dataTask(with: CurrentLocation.sharedInstance.forcastURL! as URL) {(data, response, error) in
             
@@ -153,14 +155,12 @@ class GetWeather {
                 json = nil
                 print("Error is \(error.localizedDescription)")
             }
-            
-            
             // weather detail object
             if  let forecastDetail = ForecastDetail.forecastDetialArray(json: json!) {
                 
-                var dateDetailArray:[[String]] = [[" "]]
+                var dateDetailArray:[String] = [" "]
                 
-                var dateDeats:[String] = [" "]
+               // var dateDeats:[String] = [" "]
                 
                 var i = 0
                 
@@ -175,6 +175,7 @@ class GetWeather {
                         {
                             thisDate = String(forecastDate![i].month) + "/" + String(forecastDate![i].dayte)
                         }
+                    /*
                     dateDeats.removeAll()
                     dateDeats.append(String(describing: thisDate))
                     //dateDeats.append(element.icon)      // change arrays to anyobject first || create image array
@@ -182,17 +183,37 @@ class GetWeather {
                     dateDeats.append(element.high)
                     dateDeats.append(element.conditions)
                     
-                    dateDetailArray.append(dateDeats)
+                    //dateDetailArray.append(dateDeats)
+                     */
+                    let newLine = thisDate + " " + element.low + " " + element.high + " " + element.conditions + "\r\n"
+                    dateDetailArray.append(newLine)
                     
                     i = i + 1
                 }
                 
-               print(dateDetailArray)
+               //print(dateDetailArray)
+                
+                DispatchQueue.main.async(execute: {
+                    //print("Got The Weather")
+                    //theWeather =  "Got The Weather"
+                    //print(dateDetailArray)
+                    
+                    for element in dateDetailArray {
+                        print(element)
+                        let newElement = element
+                        theWeather = theWeather + newElement
+                    }
+                    
+                    completion("\(theWeather)")
+                    
+                })
                 
             }
 
             
         }
         task.resume()
+        
+      
     }
 }

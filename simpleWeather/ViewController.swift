@@ -19,13 +19,10 @@
  
     * 1    Parse City/ State
     *        Do this in Location Class/file
-    2    Get weather for city/state for next 10 day
-            Do this in weatherAPI class/ file
-    3    Display 10 day forecast in UI
-        Call weatherAPI / Location API
-    4   Show progress bar getting weather
-
-    Eliminate GPS, Exact date forecast
+    * 2    Get weather for city/state for next 10 day
+    *        Do this in weatherAPI class/ file
+    * 3    Display 10 day forecast in UI
+      4    Show progress bar getting weather
 */
 
 import UIKit
@@ -40,7 +37,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         // Set default Text
-        weatherDisplay.text = "Please Enter a city to get a Weather Forecast \r\n\r\nWeather Forecast for your Location \r\n\r\nDate           Hi Low      Conditions \r\n1/23/2017      40/60       Clear \r\n1/23/2017      40/60       Clear \r\n1/23/2017      40/60       Clear\r\n1/23/2017      40/60       Clear"
+        weatherDisplay.text = "Please Enter a city to get a Weather Forecast"
         
         cityInput.text = "Venice CA"
     }
@@ -51,8 +48,12 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         weatherDisplay.text =  CurrentLocation.sharedInstance.parseCurrentLocation(input: cityInput.text!)
         
-        // call weather api and print results
-        GetWeather().getForecast()
+        // call weather api in closure that returns a string for the UI
+        GetWeather().getForecast { (result: String) in
+            self.weatherDisplay.text = result
+        }
+        
+        
     }
 
 

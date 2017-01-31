@@ -143,14 +143,14 @@ class GetWeather {
     func getForecast(completion: @escaping (_ result: String) -> Void) {
         
         var theWeather: String = ""
-
-         let task = URLSession.shared.dataTask(with: CurrentLocation.sharedInstance.forcastURL! as URL) {(data, response, error) in
+        
+        let task = URLSession.shared.dataTask(with: CurrentLocation.sharedInstance.forcastURL! as URL) {(data, response, error) in
             
             let json: [String: Any]?
             
             do {
                 json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
-
+                
             } catch {
                 json = nil
                 print("Error is \(error.localizedDescription)")
@@ -159,8 +159,6 @@ class GetWeather {
             if  let forecastDetail = ForecastDetail.forecastDetialArray(json: json!) {
                 
                 var dateDetailArray:[String] = [" "]
-                
-               // var dateDeats:[String] = [" "]
                 
                 var i = 0
                 
@@ -171,35 +169,24 @@ class GetWeather {
                     // date object array
                     let forecastDate = ForecastDate.forecastDateArray(json: json!)
                     var thisDate = "17"
+                    // parse month / day
                     if forecastDate?[i].month != nil && forecastDate?[i].dayte != nil
-                        {
-                            thisDate = String(forecastDate![i].month) + "/" + String(forecastDate![i].dayte)
-                        }
-                    /*
-                    dateDeats.removeAll()
-                    dateDeats.append(String(describing: thisDate))
-                    //dateDeats.append(element.icon)      // change arrays to anyobject first || create image array
-                    dateDeats.append(element.low)
-                    dateDeats.append(element.high)
-                    dateDeats.append(element.conditions)
-                    
-                    //dateDetailArray.append(dateDeats)
-                     */
+                    {
+                        thisDate = String(forecastDate![i].month) + "/" + String(forecastDate![i].dayte)
+                    }
+                    // setting one line fore each day
                     let newLine = thisDate + " " + element.low + " " + element.high + " " + element.conditions + "\r\n"
                     dateDetailArray.append(newLine)
                     
                     i = i + 1
                 }
                 
-               //print(dateDetailArray)
+                //print(dateDetailArray)
                 
                 DispatchQueue.main.async(execute: {
-                    //print("Got The Weather")
-                    //theWeather =  "Got The Weather"
-                    //print(dateDetailArray)
-                    
+                    // create text block for weather forecast array
                     for element in dateDetailArray {
-                        print(element)
+                        //print(element)
                         let newElement = element
                         theWeather = theWeather + newElement
                     }
@@ -207,13 +194,8 @@ class GetWeather {
                     completion("\(theWeather)")
                     
                 })
-                
             }
-
-            
         }
         task.resume()
-        
-      
     }
 }

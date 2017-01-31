@@ -35,7 +35,7 @@ class CurrentLocation {
             
         // no text entered, use gps to find location
         case 0:
-            return  "Please Enter a City and State"
+            return  "Please Enter a City and State or Country"
         //  city , state -- Venice, CA
         case 2:
             last = String(split.suffix(1).joined(separator: [" "]))
@@ -49,7 +49,6 @@ class CurrentLocation {
             last = String(split.suffix(1).joined(separator: [" "]))
             first = String(split.prefix(upTo: 2).joined(separator: [" "]))
             // must join first 2 city names by _ underscore
-            //currentWeather.updateUrl(last: currentLocation.last, first: currentLocation.first.replacingOccurrences(of: " ", with: "_"))
             // set forecast url
             forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first + ".json")
             
@@ -67,12 +66,6 @@ class CurrentLocation {
             //  print("ERROR: Please include a state or country")
             return "Please include a state or country"
         }
-        //  set forecast url
-           // url = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/conditions/q/" + last + "/" + first + ".json")
-            //forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first + ".json")
-            
-            //url = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/conditions/q/" + last + "/" + first.replacingOccurrences(of: " ", with: "_") + ".json")
-            //forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first.replacingOccurrences(of: " ", with: "_") + ".json")
         
     }
     

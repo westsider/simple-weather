@@ -32,7 +32,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var cityInput: UISearchBar!
     
     @IBOutlet weak var weatherDisplay: UITextView!
-
+    
+    let errorOne = "Please include a state or country"
+    
+    let errorTwo = "Please Enter a City and State or Country"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,22 +45,26 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         cityInput.text = "Venice CA"
     }
-
+    
     @IBAction func searchAction(_ sender: Any) {
         
         weatherDisplay.text = "Launching Search..."
         
-        weatherDisplay.text =  CurrentLocation.sharedInstance.parseCurrentLocation(input: cityInput.text!)
+        let searchResult  =  CurrentLocation.sharedInstance.parseCurrentLocation(input: cityInput.text!)
+        weatherDisplay.text = searchResult
         
-        // call weather api in closure that returns a string for the UI
-        GetWeather().getForecast { (result: String) in
-            self.weatherDisplay.text = result
+        // if now parsing error call weather api in closure that returns a string for the UI
+        if searchResult != errorOne && searchResult !=  errorTwo {
+            
+            GetWeather().getForecast { (result: String) in
+                self.weatherDisplay.text = result
+            }
+            
+        }  else {
+            
+            self.weatherDisplay.text = searchResult
+            
         }
-        
-        
     }
-
-
-
 }
 

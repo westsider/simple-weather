@@ -18,6 +18,9 @@ class CurrentLocation {
     
     var first = ""
     
+    var url = NSURL(string: "https://api.wunderground.com/api")
+    
+    var forcastURL = NSURL(string: "api.openweathermap.org/data/2.5/forecast/q={city name},{country code}&cnt={cnt}")
     func parseCurrentLocation(input: String)-> String {
         //  let location = cityInput.text!
         let location = input
@@ -26,6 +29,7 @@ class CurrentLocation {
         let size = split.count
         var last = ""
         var first = ""
+
         
         switch size {
             
@@ -36,6 +40,8 @@ class CurrentLocation {
         case 2:
             last = String(split.suffix(1).joined(separator: [" "]))
             first = String(split.prefix(upTo: 1).joined(separator: [" "]))
+            // set forecast url
+            forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first + ".json")
             return first + last
             
         // city city, state -- San Fransisco, CA
@@ -44,6 +50,9 @@ class CurrentLocation {
             first = String(split.prefix(upTo: 2).joined(separator: [" "]))
             // must join first 2 city names by _ underscore
             //currentWeather.updateUrl(last: currentLocation.last, first: currentLocation.first.replacingOccurrences(of: " ", with: "_"))
+            // set forecast url
+            forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first + ".json")
+            
             return first.replacingOccurrences(of: " ", with: "_") + last
             //  last    = String(split.suffix(1).joined(separator: [" "]))
             //first = String(split.prefix(upTo: 2).joined(separator: [" "]))
@@ -58,9 +67,13 @@ class CurrentLocation {
             //  print("ERROR: Please include a state or country")
             return "Please include a state or country"
         }
-}
-
-
-    
+        //  set forecast url
+           // url = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/conditions/q/" + last + "/" + first + ".json")
+            //forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first + ".json")
+            
+            //url = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/conditions/q/" + last + "/" + first.replacingOccurrences(of: " ", with: "_") + ".json")
+            //forcastURL = NSURL(string: "https://api.wunderground.com/api/f6373e95fa296c84/forecast10day/q/" + last + "/" + first.replacingOccurrences(of: " ", with: "_") + ".json")
+        
+    }
     
 }

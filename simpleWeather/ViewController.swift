@@ -17,8 +17,8 @@
  
     <— Text Entry —>    Los Angeles CA  ** Update Button**
  
-    1    Parse City/ State
-            Do this in Location Class/file
+    * 1    Parse City/ State
+    *        Do this in Location Class/file
     2    Get weather for city/state for next 10 day
             Do this in weatherAPI class/ file
     3    Display 10 day forecast in UI
@@ -41,6 +41,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         // Set default Text
         weatherDisplay.text = "Please Enter a city to get a Weather Forecast \r\n\r\nWeather Forecast for your Location \r\n\r\nDate           Hi Low      Conditions \r\n1/23/2017      40/60       Clear \r\n1/23/2017      40/60       Clear \r\n1/23/2017      40/60       Clear\r\n1/23/2017      40/60       Clear"
+        
+        cityInput.text = "Venice CA"
     }
 
     @IBAction func searchAction(_ sender: Any) {
@@ -48,6 +50,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
         weatherDisplay.text = "Launching Search..."
         
         weatherDisplay.text =  CurrentLocation.sharedInstance.parseCurrentLocation(input: cityInput.text!)
+        
+        // call weather api and print results
+        GetWeather().getForecast()
     }
 
 

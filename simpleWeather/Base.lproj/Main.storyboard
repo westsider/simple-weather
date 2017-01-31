@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,41 +26,47 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JjX-gn-sXi">
-                                <rect key="frame" x="16" y="126" width="343" height="100"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">    Weather Forecast for your Location
     Date               Hi Low    Conditions 
     1/23/2017      40/60        Clear 1/23/2017      40/60        Clear 1/23/2017      40/60        Clear 1/23/2017      40/60        Clear</string>
-                                <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNA-pc-6wx">
-                                <rect key="frame" x="265" y="226" width="94" height="44"/>
+                                <rect key="frame" x="265" y="226" width="110" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="94" id="vhx-5T-16A"/>
+                                    <constraint firstAttribute="width" constant="110" id="jcX-qo-701"/>
                                 </constraints>
                                 <state key="normal" title="Get Weather"/>
                                 <connections>
                                     <action selector="searchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6w4-dY-WoK"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QOL-xx-XgQ">
+                                <rect key="frame" x="169" y="158" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JjX-gn-sXi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9F3-HT-epf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nvm-fh-PjH" secondAttribute="bottom" constant="397" id="MOK-mM-yPo"/>
-                            <constraint firstItem="nvm-fh-PjH" firstAttribute="bottom" secondItem="PNA-pc-6wx" secondAttribute="bottom" id="Uv3-9K-xaw"/>
-                            <constraint firstItem="JjX-gn-sXi" firstAttribute="trailing" secondItem="PNA-pc-6wx" secondAttribute="trailing" id="ZG9-pb-3Ol"/>
-                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="PNA-pc-6wx" secondAttribute="top" id="lqq-6N-Aii"/>
-                            <constraint firstItem="PNA-pc-6wx" firstAttribute="leading" secondItem="nvm-fh-PjH" secondAttribute="trailing" constant="7" id="mez-Tc-3E7"/>
-                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="JjX-gn-sXi" secondAttribute="bottom" id="uHw-ba-qhE"/>
-                            <constraint firstItem="JjX-gn-sXi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wGO-kc-u17"/>
-                            <constraint firstItem="nvm-fh-PjH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wlR-J9-oDM"/>
-                            <constraint firstItem="JjX-gn-sXi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="xrK-bU-S4G"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="7NB-bU-jxq"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="centerY" secondItem="QOL-xx-XgQ" secondAttribute="centerY" id="8Tv-55-YbW"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AYy-RG-7qm"/>
+                            <constraint firstItem="PNA-pc-6wx" firstAttribute="leading" secondItem="nvm-fh-PjH" secondAttribute="trailing" constant="7" id="JGx-g3-GDQ"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="bottom" secondItem="PNA-pc-6wx" secondAttribute="bottom" id="LEb-Rp-ysn"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="JjX-gn-sXi" secondAttribute="bottom" id="Md8-A5-R5m"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="trailing" secondItem="PNA-pc-6wx" secondAttribute="trailing" id="Tg6-fb-Tvj"/>
+                            <constraint firstAttribute="trailing" secondItem="JjX-gn-sXi" secondAttribute="trailing" id="YN1-Et-2qo"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="PNA-pc-6wx" secondAttribute="top" id="eWk-AG-iAV"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="centerX" secondItem="QOL-xx-XgQ" secondAttribute="centerX" id="ew5-mB-FGK"/>
+                            <constraint firstItem="nvm-fh-PjH" firstAttribute="top" secondItem="QOL-xx-XgQ" secondAttribute="bottom" constant="31" id="uJi-Qp-KZn"/>
+                            <constraint firstItem="JjX-gn-sXi" firstAttribute="leading" secondItem="nvm-fh-PjH" secondAttribute="leading" id="vcd-Sx-kQ0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityDial" destination="QOL-xx-XgQ" id="4yv-24-M3f"/>
                         <outlet property="cityInput" destination="nvm-fh-PjH" id="sJZ-6p-7yZ"/>
                         <outlet property="weatherDisplay" destination="JjX-gn-sXi" id="mBW-Rw-t7z"/>
                     </connections>

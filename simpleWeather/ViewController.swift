@@ -6,25 +6,6 @@
 //  Copyright © 2017 Warren Hansen. All rights reserved.
 //
 
-/*
-    Current Weather Swift Needs
- 
-    * Build UI with State / City + Scrollable display
- 
-    Weather Forecast for your Locattion
-    Date               Hi Low    Conditions <— Scrollable
-    1/23/2017      40/60        Clear
- 
-    <— Text Entry —>    Los Angeles CA  ** Update Button**
- 
-    * 1    Parse City/ State
-    *        Do this in Location Class/file
-    * 2    Get weather for city/state for next 10 day
-    *        Do this in weatherAPI class/ file
-    * 3    Display 10 day forecast in UI
-      4    Show progress bar getting weather
-*/
-
 import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
@@ -32,6 +13,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var cityInput: UISearchBar!
     
     @IBOutlet weak var weatherDisplay: UITextView!
+    
+    @IBOutlet weak var activityDial: UIActivityIndicatorView!
     
     let errorOne = "Please include a state or country"
     
@@ -50,6 +33,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         weatherDisplay.text = "Launching Search..."
         
+        activityDial.startAnimating()
+        
         let searchResult  =  CurrentLocation.sharedInstance.parseCurrentLocation(input: cityInput.text!)
         weatherDisplay.text = searchResult
         
@@ -58,11 +43,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
             
             GetWeather().getForecast { (result: String) in
                 self.weatherDisplay.text = result
+                self.activityDial.stopAnimating()
             }
             
         }  else {
             
             self.weatherDisplay.text = searchResult
+             self.activityDial.stopAnimating()
             
         }
     }
